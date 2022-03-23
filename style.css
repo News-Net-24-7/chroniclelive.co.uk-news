@@ -1,0 +1,16 @@
+(function() {
+  function load(url,callback) {
+    var el = document.createElement('link');
+    el.rel = 'stylesheet';
+    if (url.indexOf('v=') === -1) {
+      url = url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + window.TMCONFIG.frontendVersion;
+    }
+    el.href = url;
+    if(callback) {
+      el.onload = callback;
+    }
+    document.getElementsByTagName('HEAD')[0].appendChild(el);
+  }
+
+  window.$css = load;
+}());
